@@ -25,7 +25,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthoryManage.Service", "Au
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthoryManage.Repository", "AuthoryManage.Repository\AuthoryManage.Repository.csproj", "{677DBB9D-5278-4944-85C0-DCBFEA34A4A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthoryManage.ModelMap", "AuthoryManage.ModelMap\AuthoryManage.ModelMap.csproj", "{4123B1D3-ED6F-4235-A30E-9C56FC2C68BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{5597AA4F-3F1D-42A7-9275-7ED045DBDDEC}"
+EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -63,6 +71,10 @@ Global
 		{677DBB9D-5278-4944-85C0-DCBFEA34A4A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{677DBB9D-5278-4944-85C0-DCBFEA34A4A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{677DBB9D-5278-4944-85C0-DCBFEA34A4A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4123B1D3-ED6F-4235-A30E-9C56FC2C68BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4123B1D3-ED6F-4235-A30E-9C56FC2C68BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4123B1D3-ED6F-4235-A30E-9C56FC2C68BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4123B1D3-ED6F-4235-A30E-9C56FC2C68BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,5 +86,7 @@ Global
 		{677DBB9D-5278-4944-85C0-DCBFEA34A4A6} = {B5F185E7-6DA2-44EA-906A-C9B0C0DBF820}
 		{D7762501-043D-4440-9A24-80402EA52455} = {CCEDD7DA-E86A-4EE3-841D-BB6555DCBCAC}
 		{D2D38B98-A3D8-4352-8F07-21E110194E11} = {CCEDD7DA-E86A-4EE3-841D-BB6555DCBCAC}
+		{4123B1D3-ED6F-4235-A30E-9C56FC2C68BA} = {5597AA4F-3F1D-42A7-9275-7ED045DBDDEC}
+		{586B553F-6DE1-413E-9E6D-D521020CD35D} = {5597AA4F-3F1D-42A7-9275-7ED045DBDDEC}
 	EndGlobalSection
 EndGlobal

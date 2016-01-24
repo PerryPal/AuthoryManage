@@ -23,16 +23,17 @@ namespace AuthoryManage.Web {
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-
             var builder = new ContainerBuilder();
             var assembly = Assembly.GetExecutingAssembly();
             var repository = System.Reflection.Assembly.Load("AuthoryManage.Repository");
-            builder.RegisterAssemblyTypes(repository, repository).Where(m => m.Namespace.StartsWith("AuthoryManage.Repository.MySql"))
+            builder.RegisterAssemblyTypes(repository, repository).Where(m => m.Namespace.StartsWith("AuthoryManage.Repository.MsSql"))
               .AsImplementedInterfaces();
             var service = System.Reflection.Assembly.Load("AuthoryManage.Service");
             builder.RegisterAssemblyTypes(service, service)
               .AsImplementedInterfaces();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            
+            builder.RegisterType<AuthoryManage.Repository.DbManage.DbFactory>().As<AuthoryManage.InterfaceRepository.IDbFactory>();
             //容器
             var container = builder.Build();
             //注入改为Autofac注入

@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseService.cs" />
+    <Compile Include="EmpService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +50,10 @@
     <ProjectReference Include="..\AuthoryManage.InterfaceService\AuthoryManage.InterfaceService.csproj">
       <Project>{d7762501-043d-4440-9a24-80402ea52455}</Project>
       <Name>AuthoryManage.InterfaceService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AuthoryManage.Models\AuthoryManage.Models.csproj">
+      <Project>{586b553f-6de1-413e-9e6d-d521020cd35d}</Project>
+      <Name>AuthoryManage.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

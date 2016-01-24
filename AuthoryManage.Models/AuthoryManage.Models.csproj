@@ -39,7 +39,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Department.cs" />
+    <Compile Include="DeptToEmp.cs" />
+    <Compile Include="Emp.cs" />
+    <Compile Include="EmpOperateLog.cs" />
+    <Compile Include="EmpToMenu.cs" />
+    <Compile Include="LoginLog.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="PageAction.cs" />
+    <Compile Include="PgaeToAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="RoleToEmp.cs" />
+    <Compile Include="RoleToMenu.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

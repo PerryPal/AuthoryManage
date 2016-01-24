@@ -9,12 +9,12 @@ namespace AuthoryManage.Web.Controllers {
     public class HomeController : Controller {
         //
         // GET: /Home/
-        private IBaseService _service;
-        public HomeController(IBaseService service) {
+        private IEmpService _service;
+        public HomeController(IEmpService service) {
             this._service = service;
         }
         public ActionResult Index() {
-            ViewBag.SSSS = _service.GetData();
+            ViewBag.SSSS = _service.LoadEntities();
             return View();
         }
 

@@ -45,8 +45,8 @@ namespace AuthoryManage.Repository.MsSql {
                     foreach (var validationError in validationErrors.ValidationErrors)
                         msg += Environment.NewLine + string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                 var fail = new Exception(msg, dbEx);
-
-                throw fail;
+                Tools.LogHelper.WriteLogFile(fail);
+                return null;
             }
         }
         #endregion
@@ -74,7 +74,8 @@ namespace AuthoryManage.Repository.MsSql {
                     foreach (var validationError in validationErrors.ValidationErrors)
                         msg += Environment.NewLine + string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                 var fail = new Exception(msg, dbEx);
-                throw fail;
+                Tools.LogHelper.WriteLogFile(fail);
+                return false;
             }
         }
         #endregion
@@ -97,7 +98,8 @@ namespace AuthoryManage.Repository.MsSql {
                     foreach (var validationError in validationErrors.ValidationErrors)
                         msg += Environment.NewLine + string.Format("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                 var fail = new Exception(msg, dbEx);
-                throw fail;
+                Tools.LogHelper.WriteLogFile(fail);
+                return false;
             }
         }
         #endregion

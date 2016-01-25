@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WebSite>
+  <LogSite>
+    <Log key="ErrorLog" title="错误日志路径" value="/App_Data/LogFile/Error/"></Log>
+    <Log key="DebugLog" title="调试日志路径" value="/App_Data/LogFile/Debug/"></Log>
+  </LogSite>
+</WebSite>

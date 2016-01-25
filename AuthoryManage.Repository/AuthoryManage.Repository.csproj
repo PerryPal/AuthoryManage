@@ -77,6 +77,10 @@
       <Project>{586b553f-6de1-413e-9e6d-d521020cd35d}</Project>
       <Name>AuthoryManage.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AuthoryManage.Tools\AuthoryManage.Tools.csproj">
+      <Project>{885046fb-b555-4d0e-b0eb-8cf48a0336cb}</Project>
+      <Name>AuthoryManage.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601241004291_AddTable.resx">

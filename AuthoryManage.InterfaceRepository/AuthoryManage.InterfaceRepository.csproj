@@ -45,6 +45,7 @@
     <Compile Include="IBaseRepository.cs" />
     <Compile Include="IDbFactory.cs" />
     <Compile Include="IEmpRepository.cs" />
+    <Compile Include="ILoginLogRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

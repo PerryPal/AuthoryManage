@@ -58,6 +58,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSql\BaseRepository.cs" />
     <Compile Include="MsSql\EmpRepository.cs" />
+    <Compile Include="MsSql\LoginLogRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

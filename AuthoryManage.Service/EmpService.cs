@@ -11,9 +11,11 @@ using System.Threading.Tasks;
 namespace AuthoryManage.Service {
     public class EmpService : BaseService<Models.Emp>, IEmpService {
         private readonly IEmpRepository _empRepository;
-        public EmpService(IEmpRepository empRepository)
+        private readonly ILoginLogRepository _loginLogRepository;
+        public EmpService(IEmpRepository empRepository,ILoginLogRepository loginLogRepository)
             : base(empRepository) {
             this._empRepository = empRepository;
+            this._loginLogRepository = loginLogRepository;
         }
         #region 员工登陆接口 Login
         /// <summary>
@@ -70,12 +72,32 @@ namespace AuthoryManage.Service {
                         };
                         empInfo.FLastLoginSource = loginSource;
                         empInfo.FLastLoginTime = DateTime.Now;
-                        empInfo.FLastLoginDesc = string.Format("登陆IP：{0},登陆地址：{1},登陆来源{2}：{3}", loginIp, loginAddress, loginSource, fLoginInfo);
-                        return operateResult;
+                        empInfo.FLastLoginDesc = string.Format("登陆IP：{0},登陆地址：{1},登陆来源{2}：{3}", loginIp, loginAddress, loginSource.GetEnumName<Models.LoginSource>(), fLoginInfo);
+                        if (_empRepository.UpdateLoginInfo(empInfo, loginInfo)) {
+                            return operateResult;
+                        }
+                        else {
+                            operateResult.OperateState = OperateStateType.Error;
+                            operateResult.OData = null;
+                            operateResult.Message = "登录失败！";
+                            return operateResult;
+                        }
                     }
                 }
                 else {
                     operateResult = new OperateResult(OperateStateType.Fail, "用户名或密码错误!");
+                    //添加登陆信息，并修改登录历史纪录
+                    LoginLog loginInfo = new LoginLog {
+                        FIsSuccess = false,
+                        FLoginAddress = loginAddress,
+                        FLoginInfo = fLoginInfo,
+                        FLoginIp = loginIp,
+                        FLoginSource = loginSource,
+                        FLoginTime = DateTime.Now,
+                        FUserId = empInfo.FUserId,
+                        FUserType = (byte)UserType.员工
+                    };
+                    _loginLogRepository.AddEntity(loginInfo, true);
                     return operateResult;
                 }
             }

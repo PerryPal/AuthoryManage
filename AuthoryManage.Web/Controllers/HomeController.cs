@@ -14,7 +14,6 @@ namespace AuthoryManage.Web.Controllers {
             this._service = service;
         }
         public ActionResult Index() {
-            ViewBag.SSSS = _service.LoadEntities();
             return View();
         }
 

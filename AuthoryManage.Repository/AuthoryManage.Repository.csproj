@@ -55,6 +55,14 @@
     <Compile Include="Migrations\201601241004291_AddTable.Designer.cs">
       <DependentUpon>201601241004291_AddTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601260601060_UpdateOperate.cs" />
+    <Compile Include="Migrations\201601260601060_UpdateOperate.Designer.cs">
+      <DependentUpon>201601260601060_UpdateOperate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601260606517_UpdateOperate1.cs" />
+    <Compile Include="Migrations\201601260606517_UpdateOperate1.Designer.cs">
+      <DependentUpon>201601260606517_UpdateOperate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSql\BaseRepository.cs" />
     <Compile Include="MsSql\EmpRepository.cs" />
@@ -86,6 +94,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601241004291_AddTable.resx">
       <DependentUpon>201601241004291_AddTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601260601060_UpdateOperate.resx">
+      <DependentUpon>201601260601060_UpdateOperate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601260606517_UpdateOperate1.resx">
+      <DependentUpon>201601260606517_UpdateOperate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

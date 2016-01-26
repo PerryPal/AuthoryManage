@@ -1,0 +1,53 @@
+﻿/*分类树*/
+#categoryTree {
+    padding-left: 15px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+    #categoryTree thead th {
+        background: #dbeffa;
+        font-weight: normal;
+        cursor: pointer;
+        padding: 4px 0;
+        padding-left: 10px;
+    }
+
+    #categoryTree table tbody th {
+        text-align: left;
+        font-weight: normal;
+    }
+
+        #categoryTree table tbody th span {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            float: left;
+        }
+
+            #categoryTree table tbody th span.open {
+                background: url(/Content/Images/tree_open.gif) no-repeat center center;
+            }
+
+            #categoryTree table tbody th span.close {
+                background: url(/Content/Images/tree_close.gif) no-repeat center center;
+            }
+
+    #categoryTree tbody td, #categoryTree tbody th {
+        border-bottom: 1px solid #ececec;
+        padding: 4px 0;
+        padding-left: 10px;
+    }
+
+    #categoryTree table tbody tr {
+        display: table-row;
+    }
+
+        #categoryTree table tbody tr.tree1 {
+            display: table-row;
+        }
+
+.chosen-container {
+    width: 180px;
+}

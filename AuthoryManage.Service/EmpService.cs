@@ -12,7 +12,7 @@ namespace AuthoryManage.Service {
     public class EmpService : BaseService<Models.Emp>, IEmpService {
         private readonly IEmpRepository _empRepository;
         private readonly ILoginLogRepository _loginLogRepository;
-        public EmpService(IEmpRepository empRepository,ILoginLogRepository loginLogRepository)
+        public EmpService(IEmpRepository empRepository, ILoginLogRepository loginLogRepository)
             : base(empRepository) {
             this._empRepository = empRepository;
             this._loginLogRepository = loginLogRepository;
@@ -86,18 +86,40 @@ namespace AuthoryManage.Service {
                 }
                 else {
                     operateResult = new OperateResult(OperateStateType.Fail, "用户名或密码错误!");
-                    //添加登陆信息，并修改登录历史纪录
-                    LoginLog loginInfo = new LoginLog {
-                        FIsSuccess = false,
-                        FLoginAddress = loginAddress,
-                        FLoginInfo = fLoginInfo,
-                        FLoginIp = loginIp,
-                        FLoginSource = loginSource,
-                        FLoginTime = DateTime.Now,
-                        FUserId = empInfo.FUserId,
-                        FUserType = (byte)UserType.员工
-                    };
-                    _loginLogRepository.AddEntity(loginInfo, true);
+                    if (!empInfo.FIsLimitLogin) {
+                        //添加登陆信息，并修改登录历史纪录
+                        LoginLog loginInfo = new LoginLog {
+                            FIsSuccess = false,
+                            FLoginAddress = loginAddress,
+                            FLoginInfo = fLoginInfo,
+                            FLoginIp = loginIp,
+                            FLoginSource = loginSource,
+                            FLoginTime = DateTime.Now,
+                            FUserId = empInfo.FUserId,
+                            FUserType = (byte)UserType.员工
+                        };
+                        _loginLogRepository.AddEntity(loginInfo, true);
+                        int errorCount = ConfigHelper.GetErrorCount();
+                        int trueCount = _loginLogRepository.LoadEntities(m => m.FUserId == empInfo.FUserId && !m.FIsSuccess && m.FLoginTime <= DateTime.Now.AddMinutes(-ConfigHelper.GetErrorTime())).Count();
+                        if (errorCount > 0 && trueCount >= errorCount) {
+                            //将该员工设置为不可登录
+                            empInfo.FIsLimitLogin = true;
+                            EmpOperateLog operateLogInfo = new EmpOperateLog {
+                                FActionType = 10,
+                                FDesc = "由于输入密码错误次数过多，将此账号设置为禁止登陆",
+                                FKeyId = empInfo.FUserId,
+                                FOperateAddress = loginAddress,
+                                FOperateIp = loginIp,
+                                FOperateSource = loginSource,
+                                FOperateTime = DateTime.Now,
+                                FOperateUserId = empInfo.FUserId,
+                                FSourceInfo = fLoginInfo,
+                                FState = false,
+                                FTitle = "多次登陆失败"
+                            };
+                            _empRepository.UpdateLimitLogin(empInfo, operateLogInfo);
+                        }
+                    }
                     return operateResult;
                 }
             }

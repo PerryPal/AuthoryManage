@@ -7,8 +7,8 @@ using System.Xml;
 
 namespace AuthoryManage.Tools {
     public class ConfigHelper {
-        #region 获取日志文件
         private static readonly string webSitePath = "~/App_Data/Site/WebSite.xml";
+        #region 获取日志文件
         #region 获取错误日志文件路径 GetLogValue
         /// <summary>
         /// 获取错误文件路径
@@ -22,7 +22,7 @@ namespace AuthoryManage.Tools {
         #endregion
         #region 获取调试日志文件路径
         public static string GetDebugLogValue() {
-            string path =GetLogValue("DebugLog");
+            string path = GetLogValue("DebugLog");
             if (string.IsNullOrEmpty(path)) path = "/App_Data/LogFile/Debug/";
             return path;
         }
@@ -34,6 +34,28 @@ namespace AuthoryManage.Tools {
         #endregion
         #endregion
 
+        #region 获取登录限制信息
+        /// <summary>
+        /// 获取登录错误时间间隔（单位：分）
+        /// </summary>
+        /// <returns></returns>
+        public static double GetErrorTime() {
+            string limitTime = GetLoginValue("ErrorTimeSpan");
+            return limitTime.SafeToDouble();
+        }
+        /// <summary>
+        /// 获取限制登陆错误次数
+        /// </summary>
+        /// <returns></returns>
+        public static int GetErrorCount() {
+            string limitCount = GetLoginValue("ErrorCount");
+            return limitCount.SafeToInt32();
+        }
+        public static string GetLoginValue(string attributeValue) {
+            return GetValue(Common.GetMapPath(webSitePath), "Login", "Login", "key", attributeValue);
+        }
+        #endregion
+
         #region 根据节点属性读取子节点值 GetValue
         /// <summary>
         /// 根据节点属性读取子节点值
@@ -43,7 +65,7 @@ namespace AuthoryManage.Tools {
         /// <param name="attributeName">属性名</param>
         /// <param name="attributeValue">属性值</param>
         /// <returns></returns>
-        public static string GetValue(string filePath, string parentElement, string elemName,string attributeName, string attributeValue) {
+        public static string GetValue(string filePath, string parentElement, string elemName, string attributeName, string attributeValue) {
             XmlDocument xDoc = new XmlDocument();
             string value = string.Empty;
             xDoc.Load(filePath);

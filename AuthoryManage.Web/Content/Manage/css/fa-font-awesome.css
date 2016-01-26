@@ -1,0 +1,30 @@
+﻿.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-barcode:before {
+    content: "\f02a";
+}
+
+.fa-bookmark-o:before {
+    content: "\f097";
+}
+
+.fa-legal:before,
+.fa-gavel:before {
+    content: "\f0e3";
+}
+
+.fa-group:before,
+.fa-users:before {
+    content: "\f0c0";
+}
+
+.fa-user-secret:before {
+    content: "\f21b";
+}

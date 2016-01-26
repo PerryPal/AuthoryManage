@@ -4,4 +4,8 @@
     <Log key="ErrorLog" title="错误日志路径" value="/App_Data/LogFile/Error/"></Log>
     <Log key="DebugLog" title="调试日志路径" value="/App_Data/LogFile/Debug/"></Log>
   </LogSite>
+  <Login>
+    <Login key="ErrorCount" title="输入密码错误次数" value="10"></Login>
+    <Login key="ErrorTimeSpan" titlt="输入密码错误时间间隔" value="15"></Login>
+  </Login>
 </WebSite>

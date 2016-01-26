@@ -16,12 +16,14 @@ namespace AuthoryManage.Tools {
         public static string GetEnumName<T>(this object obj) {
             if (obj == null) return string.Empty;
             string enumName = string.Empty;
-            foreach (var item in Enum.GetValues(typeof(T))) {
-                if ((int)obj == (int)item) {
-                    var fi = typeof(T).GetField(item.ToString());
-                    var attribute = fi.GetCustomAttributes(typeof(DescriptionAttribute), true).FirstOrDefault();
-                    enumName = attribute == null ? Enum.GetName(typeof(T), obj) : ((DescriptionAttribute)attribute).Description;
-                    break;
+            foreach (int item in Enum.GetValues(typeof(T))) {
+                if (obj.ToString() == item.ToString()) {
+                    var fi = typeof(T).GetField(Enum.GetName(typeof(T), item));
+                    if (fi != null) {
+                        var attribute = fi.GetCustomAttributes(typeof(DescriptionAttribute), true).FirstOrDefault();
+                        enumName = attribute == null ? Enum.GetName(typeof(T), obj) : ((DescriptionAttribute)attribute).Description;
+                        break;
+                    }
                 }
             }
             return enumName;
